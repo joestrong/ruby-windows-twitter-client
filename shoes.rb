@@ -4,16 +4,23 @@ end
 
 require 'twitter'
 
-Shoes.app do
-  background "#fff".."#eee"
-  border("#ccc", :strokewidth => 6)
+Shoes.app(:title => "Feather", :width => 480, :height =>480, :resizable => false) do
+  background "#fff"
   @timeline = Twitter.user_timeline("strongjoe")
-  stack do
+  stack(:width => 75) do
+	background "#222"
+    para "menu"
+  end
+  stack(:width => 405) do
     @timeline.each do |tweet|
-      flow do
-        para tweet.from_user_id
-        para tweet.text
-      end
+	  stack do
+	    background "#aaa".."#bbb"
+        flow do
+		  image tweet.user.profile_image_url
+          para tweet.user.name
+          para tweet.text
+        end
+	  end
     end
   end
 end
