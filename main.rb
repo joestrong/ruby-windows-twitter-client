@@ -11,6 +11,7 @@ class Feather < Shoes
   def index
     menu()
     stack(:width => 405) do
+      background 'background.png'
       para "general timeline"
     end
   end
@@ -19,11 +20,11 @@ class Feather < Shoes
     @timeline = Twitter.user_timeline("strongjoe")
     menu()
     stack(:width => 405, :height => 480, :scroll => true) do
+      background 'background.png'
       @timeline.each do |tweet|
 	    stack do
-	      background "#aaa".."#bbb"
           flow do
-		    image tweet.user.profile_image_url
+            image tweet.user.profile_image_url
             para tweet.user.name
             para tweet.text
           end
@@ -32,15 +33,12 @@ class Feather < Shoes
     end
   end
   
-  def general
-    background "#fff"
-  end
-  
   def menu
-    stack(:width => 75) do
+    stack(:width => 75, :height => 480) do
+      background '#222'
       para "Menu"
-	  para link("Home", :click => "/")
-	  para link("User", :click => "/user")
+	    para link("Home", :click => "/")
+	    para link("User", :click => "/user")
     end
   end
   
