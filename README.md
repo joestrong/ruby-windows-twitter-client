@@ -1,2 +1,2 @@
 # Twitter client for Windows
-Built with Ruby wearing Shoes
+An experiment in creating a windows twitter client with ruby and the shoes library
